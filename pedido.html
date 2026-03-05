@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uma pergunta... 💚</title>
+
+<style>
+
+body{
+background: linear-gradient(135deg, #0f2027, #2e7d32, #a5d6a7);
+color:white;
+text-align:center;
+font-family:Arial;
+padding-top:100px;
+overflow:hidden;
+}
+
+button{
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+margin:20px;
+}
+
+#sim{
+background:#2ecc71;
+color:white;
+}
+
+#nao{
+background:#e74c3c;
+color:white;
+position:absolute;
+}
+
+#popup{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
+background:white;
+color:black;
+padding:30px;
+border-radius:15px;
+width:300px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+#voltar{
+margin-top:20px;
+background:#2ecc71;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Você aceita viver esse futuro comigo? 💚</h1>
+
+<button id="sim" onclick="aceitou()">SIM 💚</button>
+<button id="nao" onmouseover="fugir()">NÃO</button>
+
+
+<div id="popup">
+
+<h2>Eu sabia! 💚</h2>
+
+<p>
+Eu sabia que você diria sim.<br><br>
+
+Esse botão abaixo serve para voltar ao início do site.<br>
+Caso você queira rever tudo novamente 💚
+</p>
+
+<button id="voltar" onclick="voltarInicio()">↺ Voltar ao começo</button>
+
+</div>
+
+
+<script>
+
+function fugir(){
+
+var botao = document.getElementById("nao");
+
+var largura = window.innerWidth - 100;
+var altura = window.innerHeight - 100;
+
+var novaX = Math.random() * largura;
+var novaY = Math.random() * altura;
+
+botao.style.left = novaX + "px";
+botao.style.top = novaY + "px";
+
+}
+
+function aceitou(){
+
+document.getElementById("popup").style.display = "block";
+
+}
+
+function voltarInicio(){
+
+window.location.href = "index.html";
+
+}
+
+</script>
+
+</body>
+</html>
