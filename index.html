@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Para Paola ❤️</title>
+<title>Para Paola, meu amor 💚</title>
+
 <style>
 body {
     background-color: black;
@@ -11,28 +12,64 @@ body {
     font-family: Arial;
     padding-top: 100px;
 }
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+}
+
 button {
-    padding: 15px 30px;
-    font-size: 18px;
+    padding: 10px 20px;
+    font-size: 16px;
     background-color: pink;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#proximo {
+    display: none;
+    margin-top: 20px;
 }
 </style>
 </head>
+
 <body>
 
-<h1>Missão Especial 💌</h1>
-<p>Clique no botão abaixo...</p>
+<h1>Para confirmar que é você</h1>
 
-<button onclick="mostrarMensagem()">Descobrir</button>
+<p>Qual foi o primeiro apelido que eu te chamei?</p>
+
+<input type="text" id="resposta" placeholder="Digite aqui...">
+<button onclick="verificar()">Confirmar</button>
 
 <p id="mensagem" style="margin-top:30px;"></p>
 
+<button id="proximo" onclick="irParaCarta()">Ir para a próxima página 💌</button>
+
 <script>
-function mostrarMensagem() {
-    document.getElementById("mensagem").innerHTML =
-    "Paola, eu te amo daqui até a lua indo e voltando mil milhões de vezes 💖 Always and forever.";
+function verificar() {
+
+    var respostaDigitada = document.getElementById("resposta").value.trim().toLowerCase();
+
+    if (respostaDigitada === "boleta") {
+
+        document.getElementById("mensagem").innerHTML =
+        "Acesso liberado minha princesa 💚";
+
+        document.getElementById("proximo").style.display = "inline-block";
+
+    } else {
+        document.getElementById("mensagem").innerHTML =
+        "Hmm... tenta de novo amor 😏";
+    }
+}
+
+function irParaCarta() {
+    window.location.href = "carta.html";
 }
 </script>
 
