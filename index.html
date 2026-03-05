@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
 <meta charset="UTF-8">
@@ -49,6 +49,7 @@ right: 20px;
 width: 80px;
 cursor: pointer;
 animation: girar 6s linear infinite;
+display:none;
 }
 
 @keyframes girar{
@@ -71,10 +72,19 @@ font-size:14px;
 width:220px;
 box-shadow:0px 0px 10px rgba(0,0,0,0.4);
 }
+
+/* CONTADOR */
+
+#contador{
+font-size:40px;
+margin-top:20px;
+}
 </style>
 </head>
 
 <body>
+
+<div id="conteudo">
 
 <h1>Para confirmar que é você</h1>
 
@@ -86,6 +96,8 @@ box-shadow:0px 0px 10px rgba(0,0,0,0.4);
 <p id="mensagem" style="margin-top:30px;"></p>
 
 <button id="proximo" onclick="irParaCarta()">Ir para a próxima página 💌</button>
+
+</div>
 
 <!-- DISCO DE MUSICA -->
 
@@ -100,26 +112,87 @@ Comece em <b>1:03</b> 💚
 
 <script>
 
+/* DATA DE LIBERAÇÃO */
+
+var liberacao = new Date("2026-03-08T00:00:00");
+
+
+function verificarHorario(){
+
+var agora = new Date();
+
+if(agora < liberacao){
+
+document.getElementById("conteudo").innerHTML = `
+<h1>Calma minha princesa 💚</h1>
+<p>Sua surpresa será liberada em:</p>
+<div id="contador">00:00:00</div>
+`;
+
+setInterval(atualizarContador,1000);
+
+}else{
+
+document.getElementById("disco").style.display = "block";
+
+}
+
+}
+
+
+function atualizarContador(){
+
+var agora = new Date();
+
+var diferenca = liberacao - agora;
+
+if(diferenca <= 0){
+
+location.reload();
+return;
+
+}
+
+var horas = Math.floor(diferenca / (1000*60*60));
+var minutos = Math.floor((diferenca % (1000*60*60)) / (1000*60));
+var segundos = Math.floor((diferenca % (1000*60)) / 1000);
+
+horas = String(horas).padStart(2,"0");
+minutos = String(minutos).padStart(2,"0");
+segundos = String(segundos).padStart(2,"0");
+
+document.getElementById("contador").innerHTML =
+horas + ":" + minutos + ":" + segundos;
+
+}
+
+
+/* FUNÇÃO DA SENHA */
+
 function verificar() {
 
-    var respostaDigitada = document.getElementById("resposta").value.trim().toLowerCase();
+var respostaDigitada = document.getElementById("resposta").value.trim().toLowerCase();
 
-    if (respostaDigitada === "boleta") {
+if (respostaDigitada === "boleta") {
 
-        document.getElementById("mensagem").innerHTML =
-        "Acesso liberado minha princesa 💚";
+document.getElementById("mensagem").innerHTML =
+"Acesso liberado minha princesa 💚";
 
-        document.getElementById("proximo").style.display = "inline-block";
+document.getElementById("proximo").style.display = "inline-block";
 
-    } else {
-        document.getElementById("mensagem").innerHTML =
-        "Hmm... tenta de novo amor 😏";
-    }
+} else {
+
+document.getElementById("mensagem").innerHTML =
+"Hmm... tenta de novo amor 😏";
+
+}
+
 }
 
 function irParaCarta() {
-    window.location.href = "carta.html";
+window.location.href = "carta.html";
 }
+
 
 /* FUNÇÃO DA DICA DA MUSICA */
 
@@ -128,12 +201,17 @@ function mostrarDica(){
 var caixa = document.getElementById("dicaMusica");
 
 if(caixa.style.display === "none" || caixa.style.display === ""){
-    caixa.style.display = "block";
+caixa.style.display = "block";
 }else{
-    caixa.style.display = "none";
+caixa.style.display = "none";
 }
 
 }
+
+
+/* INICIAR VERIFICAÇÃO DE HORÁRIO */
+
+verificarHorario();
 
 </script>
 
