@@ -35,6 +35,38 @@ button {
     display: none;
     margin-top: 20px;
 }
+
+/* DISCO GIRANDO */
+
+#disco{
+position: fixed;
+bottom: 20px;
+right: 20px;
+width: 80px;
+cursor: pointer;
+animation: girar 6s linear infinite;
+}
+
+@keyframes girar{
+from{ transform: rotate(0deg); }
+to{ transform: rotate(360deg); }
+}
+
+/* CAIXA DA DICA */
+
+#dicaMusica{
+display:none;
+position:fixed;
+bottom:120px;
+right:20px;
+background:white;
+color:black;
+padding:15px;
+border-radius:10px;
+font-size:14px;
+width:220px;
+box-shadow:0px 0px 10px rgba(0,0,0,0.4);
+}
 </style>
 </head>
 
@@ -51,7 +83,19 @@ button {
 
 <button id="proximo" onclick="irParaCarta()">Ir para a próxima página 💌</button>
 
+<!-- DISCO DE MUSICA -->
+
+<img id="disco" src="https://cdn-icons-png.flaticon.com/512/727/727218.png" onclick="mostrarDica()">
+
+<div id="dicaMusica">
+🎵 Para essa surpresa ficar perfeita...<br><br>
+Pesquise essa música:<br>
+<b>Meu Abrigo - Melim</b><br>
+Comece em <b>1:03</b> 💚
+</div>
+
 <script>
+
 function verificar() {
 
     var respostaDigitada = document.getElementById("resposta").value.trim().toLowerCase();
@@ -72,6 +116,21 @@ function verificar() {
 function irParaCarta() {
     window.location.href = "carta.html";
 }
+
+/* FUNÇÃO DA DICA DA MUSICA */
+
+function mostrarDica(){
+
+var caixa = document.getElementById("dicaMusica");
+
+if(caixa.style.display === "none" || caixa.style.display === ""){
+    caixa.style.display = "block";
+}else{
+    caixa.style.display = "none";
+}
+
+}
+
 </script>
 
 </body>
