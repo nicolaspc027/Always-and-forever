@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Minha Carta 💚</title>
 
 <style>
@@ -12,6 +13,13 @@ body {
     text-align: center;
     padding: 50px;
 }
+
+#carta {
+    font-size: 18px;
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.6;
+}
 </style>
 </head>
 
@@ -19,17 +27,44 @@ body {
 
 <h1>Feliz Aniversário, minha princesa 💚</h1>
 
-<p>
-Eii meu amor, parabéns pelo seu dia e também feliz dia das mulheres.<br>
-Vim te dizer que eu te amo muito daqui até a lua indo e voltando mil milhões de vezes para todo o sempre<br>
-Saiba que eu tenho muito orgulho de você e de quem está se tornando<br><br>
+<p id="carta"></p>
 
-Minha boleta,<br>
-Eu confio muito no seu potencial e sei o quão capaz de tudo você é.<br>
-Obrigado por ser essa mulher tão perfeita comigo, saiba que sempre estarei contigo para te apoiar e ajudar.<br><br>
+<button onclick="irParaFotos()" style="margin-top:40px;padding:10px 20px;border-radius:8px;border:none;background:pink;">
+Ver nossas fotos 📸
+</button>
 
-Somos para always and forever 💚
-</p>
+<script>
+
+var texto = `Eii meu amor, parabéns pelo seu dia e também feliz Dia das Mulheres.
+
+Vim te dizer que eu te amo muito daqui até a lua indo e voltando mil milhões de vezes para todo o sempre.
+Saiba que eu tenho muito orgulho de você e de quem está se tornando.
+
+Minha boleta,
+Eu confio muito no seu potencial e sei o quão capaz de tudo você é.
+Obrigado por ser essa mulher tão perfeita comigo.
+
+Saiba que sempre estarei contigo para te apoiar e ajudar.
+
+Somos always and forever 💚`;
+
+var i = 0;
+
+function escrever() {
+    if (i < texto.length) {
+        document.getElementById("carta").innerHTML += texto.charAt(i);
+        i++;
+        setTimeout(escrever, 40);
+    }
+}
+
+escrever();
+
+function irParaFotos() {
+    window.location.href = "fotos.html";
+}
+
+</script>
 
 </body>
 </html>
